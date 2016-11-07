@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="POPULATIONModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Age">
+    <Key>
+      <PropertyRef Name="AgeID" />
+    </Key>
+    <Property Name="AgeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AgeStart" Type="Int32" />
+    <Property Name="AgeEnd" Type="Int32" />
+    <NavigationProperty Name="MemberQuantities" Relationship="Self.FK_MemberQuantity_Age" FromRole="Age" ToRole="MemberQuantity" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="Int32" Nullable="false" />
+    <Property Name="JobName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MemberQuantities" Relationship="Self.FK_MemberQuantity_Job" FromRole="Job" ToRole="MemberQuantity" />
+  </EntityType>
+  <EntityType Name="MemberInfo">
+    <Key>
+      <PropertyRef Name="MemberId" />
+    </Key>
+    <Property Name="MemberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MemberTypeId" Type="Int32" />
+    <Property Name="MemberParent" Type="Int32" />
+    <NavigationProperty Name="MemberType" Relationship="Self.FK_MemberInfo_MemberType" FromRole="MemberInfo" ToRole="MemberType" />
+    <NavigationProperty Name="MemberQuantities" Relationship="Self.FK_MemberQuantity_MemberInfo" FromRole="MemberInfo" ToRole="MemberQuantity" />
+  </EntityType>
+  <EntityType Name="MemberQuantity">
+    <Key>
+      <PropertyRef Name="MemberId" />
+      <PropertyRef Name="AgeID" />
+      <PropertyRef Name="SexID" />
+      <PropertyRef Name="JobID" />
+      <PropertyRef Name="Year" />
+    </Key>
+    <Property Name="MemberId" Type="Int32" Nullable="false" />
+    <Property Name="AgeID" Type="Int32" Nullable="false" />
+    <Property Name="SexID" Type="Int32" Nullable="false" />
+    <Property Name="JobID" Type="Int32" Nullable="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <NavigationProperty Name="Age" Relationship="Self.FK_MemberQuantity_Age" FromRole="MemberQuantity" ToRole="Age" />
+    <NavigationProperty Name="Job" Relationship="Self.FK_MemberQuantity_Job" FromRole="MemberQuantity" ToRole="Job" />
+    <NavigationProperty Name="MemberInfo" Relationship="Self.FK_MemberQuantity_MemberInfo" FromRole="MemberQuantity" ToRole="MemberInfo" />
+    <NavigationProperty Name="Sex" Relationship="Self.FK_MemberQuantity_Sex" FromRole="MemberQuantity" ToRole="Sex" />
+  </EntityType>
+  <EntityType Name="MemberType">
+    <Key>
+      <PropertyRef Name="MemberTypeId" />
+    </Key>
+    <Property Name="MemberTypeId" Type="Int32" Nullable="false" />
+    <Property Name="MemberTypeName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="MemberInfoes" Relationship="Self.FK_MemberInfo_MemberType" FromRole="MemberType" ToRole="MemberInfo" />
+  </EntityType>
+  <EntityType Name="Sex">
+    <Key>
+      <PropertyRef Name="SexID" />
+    </Key>
+    <Property Name="SexID" Type="Int32" Nullable="false" />
+    <Property Name="SexName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MemberQuantities" Relationship="Self.FK_MemberQuantity_Sex" FromRole="Sex" ToRole="MemberQuantity" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_MemberQuantity_Age">
+    <End Role="Age" Type="Self.Age" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MemberQuantity" Type="Self.MemberQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Age">
+        <PropertyRef Name="AgeID" />
+      </Principal>
+      <Dependent Role="MemberQuantity">
+        <PropertyRef Name="AgeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberQuantity_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MemberQuantity" Type="Self.MemberQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JobID" />
+      </Principal>
+      <Dependent Role="MemberQuantity">
+        <PropertyRef Name="JobID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberInfo_MemberType">
+    <End Role="MemberType" Type="Self.MemberType" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MemberInfo" Type="Self.MemberInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberType">
+        <PropertyRef Name="MemberTypeId" />
+      </Principal>
+      <Dependent Role="MemberInfo">
+        <PropertyRef Name="MemberTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberQuantity_MemberInfo">
+    <End Role="MemberInfo" Type="Self.MemberInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MemberQuantity" Type="Self.MemberQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberInfo">
+        <PropertyRef Name="MemberId" />
+      </Principal>
+      <Dependent Role="MemberQuantity">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberQuantity_Sex">
+    <End Role="Sex" Type="Self.Sex" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MemberQuantity" Type="Self.MemberQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sex">
+        <PropertyRef Name="SexID" />
+      </Principal>
+      <Dependent Role="MemberQuantity">
+        <PropertyRef Name="SexID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="POPULATIONEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ages" EntityType="Self.Age" />
+    <EntitySet Name="Jobs" EntityType="Self.Job" />
+    <EntitySet Name="MemberInfoes" EntityType="Self.MemberInfo" />
+    <EntitySet Name="MemberQuantities" EntityType="Self.MemberQuantity" />
+    <EntitySet Name="MemberTypes" EntityType="Self.MemberType" />
+    <EntitySet Name="Sexes" EntityType="Self.Sex" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_MemberQuantity_Age" Association="Self.FK_MemberQuantity_Age">
+      <End Role="Age" EntitySet="Ages" />
+      <End Role="MemberQuantity" EntitySet="MemberQuantities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberQuantity_Job" Association="Self.FK_MemberQuantity_Job">
+      <End Role="Job" EntitySet="Jobs" />
+      <End Role="MemberQuantity" EntitySet="MemberQuantities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberInfo_MemberType" Association="Self.FK_MemberInfo_MemberType">
+      <End Role="MemberType" EntitySet="MemberTypes" />
+      <End Role="MemberInfo" EntitySet="MemberInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberQuantity_MemberInfo" Association="Self.FK_MemberQuantity_MemberInfo">
+      <End Role="MemberInfo" EntitySet="MemberInfoes" />
+      <End Role="MemberQuantity" EntitySet="MemberQuantities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberQuantity_Sex" Association="Self.FK_MemberQuantity_Sex">
+      <End Role="Sex" EntitySet="Sexes" />
+      <End Role="MemberQuantity" EntitySet="MemberQuantities" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

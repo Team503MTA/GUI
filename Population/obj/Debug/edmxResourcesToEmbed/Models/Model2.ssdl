@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="POPULATIONModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Age">
+    <Key>
+      <PropertyRef Name="AgeID" />
+    </Key>
+    <Property Name="AgeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AgeNumber" Type="int" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="int" Nullable="false" />
+    <Property Name="JobName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MemberInfo">
+    <Key>
+      <PropertyRef Name="MemberId" />
+    </Key>
+    <Property Name="MemberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MemberTypeId" Type="int" />
+    <Property Name="MemberParent" Type="int" />
+  </EntityType>
+  <EntityType Name="MemberQuantity">
+    <Key>
+      <PropertyRef Name="MemberId" />
+      <PropertyRef Name="AgeID" />
+      <PropertyRef Name="SexID" />
+      <PropertyRef Name="JobID" />
+      <PropertyRef Name="Year" />
+    </Key>
+    <Property Name="MemberId" Type="int" Nullable="false" />
+    <Property Name="AgeID" Type="int" Nullable="false" />
+    <Property Name="SexID" Type="int" Nullable="false" />
+    <Property Name="JobID" Type="int" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="MemberType">
+    <Key>
+      <PropertyRef Name="MemberTypeId" />
+    </Key>
+    <Property Name="MemberTypeId" Type="int" Nullable="false" />
+    <Property Name="MemberTypeName" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="People">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="MemberId" Type="int" />
+    <Property Name="AgeID" Type="int" />
+    <Property Name="SexID" Type="int" />
+    <Property Name="JobID" Type="int" />
+    <Property Name="Year" Type="int" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sex">
+    <Key>
+      <PropertyRef Name="SexID" />
+    </Key>
+    <Property Name="SexID" Type="int" Nullable="false" />
+    <Property Name="SexName" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="UserAdmin">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PassWord" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <Association Name="FK_MemberInfo_MemberType">
+    <End Role="MemberType" Type="Self.MemberType" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MemberInfo" Type="Self.MemberInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberType">
+        <PropertyRef Name="MemberTypeId" />
+      </Principal>
+      <Dependent Role="MemberInfo">
+        <PropertyRef Name="MemberTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberQuantity_Age">
+    <End Role="Age" Type="Self.Age" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MemberQuantity" Type="Self.MemberQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Age">
+        <PropertyRef Name="AgeID" />
+      </Principal>
+      <Dependent Role="MemberQuantity">
+        <PropertyRef Name="AgeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberQuantity_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MemberQuantity" Type="Self.MemberQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JobID" />
+      </Principal>
+      <Dependent Role="MemberQuantity">
+        <PropertyRef Name="JobID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberQuantity_MemberInfo">
+    <End Role="MemberInfo" Type="Self.MemberInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MemberQuantity" Type="Self.MemberQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberInfo">
+        <PropertyRef Name="MemberId" />
+      </Principal>
+      <Dependent Role="MemberQuantity">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberQuantity_Sex">
+    <End Role="Sex" Type="Self.Sex" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MemberQuantity" Type="Self.MemberQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sex">
+        <PropertyRef Name="SexID" />
+      </Principal>
+      <Dependent Role="MemberQuantity">
+        <PropertyRef Name="SexID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="POPULATIONModelStoreContainer">
+    <EntitySet Name="Age" EntityType="Self.Age" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberInfo" EntityType="Self.MemberInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberQuantity" EntityType="Self.MemberQuantity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberType" EntityType="Self.MemberType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="People" EntityType="Self.People" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sex" EntityType="Self.Sex" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAdmin" EntityType="Self.UserAdmin" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_MemberInfo_MemberType" Association="Self.FK_MemberInfo_MemberType">
+      <End Role="MemberType" EntitySet="MemberType" />
+      <End Role="MemberInfo" EntitySet="MemberInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberQuantity_Age" Association="Self.FK_MemberQuantity_Age">
+      <End Role="Age" EntitySet="Age" />
+      <End Role="MemberQuantity" EntitySet="MemberQuantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberQuantity_Job" Association="Self.FK_MemberQuantity_Job">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="MemberQuantity" EntitySet="MemberQuantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberQuantity_MemberInfo" Association="Self.FK_MemberQuantity_MemberInfo">
+      <End Role="MemberInfo" EntitySet="MemberInfo" />
+      <End Role="MemberQuantity" EntitySet="MemberQuantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberQuantity_Sex" Association="Self.FK_MemberQuantity_Sex">
+      <End Role="Sex" EntitySet="Sex" />
+      <End Role="MemberQuantity" EntitySet="MemberQuantity" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
