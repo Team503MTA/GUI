@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DatabaseDAL.Entity;
-using Population.Models.Entity;
 
 namespace DatabaseDAL.Memory
 {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DatabaseDAL.Entity;
+using DatabaseDAL.Keys;
 using MongoDB.Bson;
-using Population.Models.Keys;
 
 namespace DatabaseDAL.Memory
 {

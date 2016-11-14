@@ -1,6 +1,5 @@
 ﻿using DatabaseDAL.Entity;
 using MongoDB.Bson;
-using Population.Models.Entity;
 
 namespace DatabaseDAL.Common
 {

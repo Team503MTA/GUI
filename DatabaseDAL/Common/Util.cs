@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using DatabaseDAL.Config;
+﻿using DatabaseDAL.Config;
 using MongoDB.Bson;
 using MongoDB.Driver;
 

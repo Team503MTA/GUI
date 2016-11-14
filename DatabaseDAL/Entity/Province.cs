@@ -1,7 +1,7 @@
 ﻿using System;
 using MongoDB.Bson;
 
-namespace Population.Models.Entity
+namespace DatabaseDAL.Entity
 {
     public class Province : ICloneable
     {

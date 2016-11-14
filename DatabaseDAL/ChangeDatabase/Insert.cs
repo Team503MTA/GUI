@@ -4,7 +4,6 @@ using DatabaseDAL.Entity;
 using DatabaseDAL.Memory;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using Population.Models.Entity;
 
 namespace DatabaseDAL.ChangeDatabase
 {

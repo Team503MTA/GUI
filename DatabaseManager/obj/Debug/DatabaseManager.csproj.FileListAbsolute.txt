@@ -1,0 +1,12 @@
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\bin\Debug\DatabaseManager.exe.config
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\bin\Debug\DatabaseManager.exe
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\bin\Debug\DatabaseManager.pdb
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\bin\Debug\MongoDB.Bson.dll
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\bin\Debug\MongoDB.Driver.dll
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\bin\Debug\MongoRepository.Net45.dll
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\bin\Debug\MongoDB.Bson.xml
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\bin\Debug\MongoDB.Driver.xml
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\bin\Debug\MongoRepository.Net45.xml
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\obj\Debug\DatabaseManager.csprojResolveAssemblyReference.cache
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\obj\Debug\DatabaseManager.exe
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\obj\Debug\DatabaseManager.pdb

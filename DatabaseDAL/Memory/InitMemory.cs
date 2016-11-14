@@ -1,6 +1,5 @@
 ﻿using DatabaseDAL.Entity;
 using DatabaseDAL.LoadData;
-using Population.Models.Entity;
 
 namespace DatabaseDAL.Memory
 {

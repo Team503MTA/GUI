@@ -10,3 +10,6 @@ G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\Population\DatabaseDAL\bin\Debug\M
 G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\Population\DatabaseDAL\bin\Debug\MongoDB.Bson.xml
 G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\Population\DatabaseDAL\bin\Debug\MongoDB.Driver.xml
 G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\Population\DatabaseDAL\bin\Debug\MongoDB.Driver.Core.xml
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseDAL\bin\Debug\DatabaseDAL.exe.config
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseDAL\obj\Debug\DatabaseDAL.exe
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseDAL\obj\Debug\DatabaseDAL.pdb

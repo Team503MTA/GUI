@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 
-namespace Population.Models.Keys
+namespace DatabaseDAL.Keys
 {
     public class BranchQuantityKeys
     {
