@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="myCtrl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Population Infomation</title>
+    <link href="~/Css/main.css" rel="stylesheet" />
+
+    @*    <script src="~/Javascript/vendor/angular.min.js"></script>*@
+    <script src="~/Javascript/vendor/canvasjs.min.js"></script>
+    <script src="~/Javascript/vendor/modernizr-2.6.2.js"></script>
+    <script src="~/Javascript/vendor/jquery-3.1.0.min.js"></script>
+    <script src="~/Javascript/vendor/bootstrap.min.js"></script>
+    <script src="~/Javascript/vendor/xls.js"></script>
+    <script src="~/Javascript/app.enum.js"></script>
+    <script src="~/Javascript/main.js"></script>
+</head>
+<body>
+
+    @RenderBody()
+
+
+    <script type="text/javascript">
+
+
+        function sendRequest(controller, action, data, callback) {
+
+            var url = '/' + controller + '/' + action;
+
+
+            $.ajax({
+                url: url,
+                dataType: 'json',
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json; charset=utf-8',
+                success: callback,
+                error: function (data) {
+                    console.log('fail' + data);
+                }
+            });
+
+
+        }
+
+    </script>
+
+    <script src="~/Javascript/memory.js"></script>
+
+</body>
+</html>

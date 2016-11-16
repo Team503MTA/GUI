@@ -10,3 +10,5 @@ G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\bin\Debug\Mong
 G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\obj\Debug\DatabaseManager.csprojResolveAssemblyReference.cache
 G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\obj\Debug\DatabaseManager.exe
 G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\obj\Debug\DatabaseManager.pdb
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\bin\Debug\Newtonsoft.Json.dll
+G:\GoogleDrive\LapTrinh\Hocky_1_2016\GUI\Code\GUI\DatabaseManager\bin\Debug\Newtonsoft.Json.xml

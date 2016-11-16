@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using DatabaseDAL.Memory;
+using DatabaseManager.Memory;
 using log4net.Config;
 
 namespace Population
@@ -17,7 +17,7 @@ namespace Population
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             XmlConfigurator.Configure();
 
-            InitMemory.Init();
+            EntityDic.LoadAll();
         }
     }
 }

@@ -209,6 +209,10 @@
       <Project>{9a22e446-c450-48eb-b5fe-82a1630f19bb}</Project>
       <Name>DatabaseDAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DatabaseManager\DatabaseManager.csproj">
+      <Project>{28eacc5c-5fbf-4298-a53d-ff8299eb90cb}</Project>
+      <Name>DatabaseManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
