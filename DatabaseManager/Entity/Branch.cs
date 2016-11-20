@@ -1,10 +1,11 @@
-﻿using MongoDB.Bson;
+﻿using System;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
 namespace DatabaseManager.Entity
 {
-    public class Branch : MongoRepository.Entity
+    public class Branch : MongoRepository.Entity, ICloneable
     {
 
 
@@ -20,6 +21,11 @@ namespace DatabaseManager.Entity
         [BsonRepresentation(BsonType.ObjectId)]
         public string AreaId { get; set; }
 
+
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
 
     }
 }

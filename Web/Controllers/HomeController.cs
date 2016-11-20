@@ -11,11 +11,6 @@ namespace Web.Controllers
         {
             return View();
         }
-
-        public JsonResult UpdateDistrict(List<DistrictQuantity> listData)
-        {
-            return Json("1");
-        }
-
+        
     }
 }

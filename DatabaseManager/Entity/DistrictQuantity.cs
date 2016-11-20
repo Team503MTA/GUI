@@ -1,10 +1,11 @@
-﻿using MongoDB.Bson;
+﻿using System;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
 namespace DatabaseManager.Entity
 {
-    public class DistrictQuantity : MongoRepository.Entity
+    public class DistrictQuantity : MongoRepository.Entity, ICloneable
     {
 
 
@@ -26,7 +27,7 @@ namespace DatabaseManager.Entity
         [BsonRepresentation(BsonType.ObjectId)]
         public string SexId { get; set; }
 
-        
+
         [JsonProperty(Required = Required.Always)]
         [BsonRepresentation(BsonType.ObjectId)]
         public string JobId { get; set; }
@@ -39,6 +40,11 @@ namespace DatabaseManager.Entity
         [JsonProperty(Required = Required.Always)]
         public long Quantity { get; set; }
 
+
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
 
     }
 }

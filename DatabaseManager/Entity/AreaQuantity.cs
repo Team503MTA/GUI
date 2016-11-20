@@ -1,10 +1,11 @@
-﻿using MongoDB.Bson;
+﻿using System;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
 namespace DatabaseManager.Entity
 {
-    public class AreaQuantity : MongoRepository.Entity
+    public class AreaQuantity : MongoRepository.Entity, ICloneable
     {
 
         [JsonProperty(Required = Required.Always)]
@@ -38,5 +39,11 @@ namespace DatabaseManager.Entity
         [JsonProperty(Required = Required.Always)]
         public long Quantity { get; set; }
 
+
+
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
 }

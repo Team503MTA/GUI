@@ -58,6 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomObject\DistrictQuantityExcel.cs" />
+    <Compile Include="CustomObject\CustomEnum.cs" />
     <Compile Include="Entity\Age.cs" />
     <Compile Include="Entity\Area.cs" />
     <Compile Include="Entity\AreaQuantity.cs" />

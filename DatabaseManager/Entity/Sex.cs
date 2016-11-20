@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace DatabaseManager.Entity
 {
-    public class Sex : MongoRepository.Entity
+    public class Sex : MongoRepository.Entity, ICloneable
     {
 
         [JsonProperty(Required = Required.Always)]
@@ -12,7 +13,12 @@ namespace DatabaseManager.Entity
 
         [JsonProperty(Required = Required.Always)]
         public string SexName { get; set; }
-        
+
+
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
 
     }
 }

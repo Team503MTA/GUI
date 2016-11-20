@@ -1,11 +1,12 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Specialized;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
 namespace DatabaseManager.Entity
 {
-    public class BranchQuantity : MongoRepository.Entity
+    public class BranchQuantity : MongoRepository.Entity, ICloneable
     {
 
 
@@ -40,7 +41,12 @@ namespace DatabaseManager.Entity
 
         [JsonProperty(Required = Required.Always)]
         public long Quantity { get; set; }
-        
+
+
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
 
     }
 }

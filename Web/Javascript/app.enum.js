@@ -1,8 +1,13 @@
 ﻿
 
 var $Controller = {
+
     Dataprovider: 'DataProvider',
-    Home: 'Home'
+
+    Home: 'Home',
+
+    Upload: 'Upload'
+
 };
 
 var $Action = {
@@ -19,6 +24,24 @@ var $Action = {
 
     GetAllSex: 'GetAllSex',
 
-    GetAllJob: 'GetAllJob'
+    GetAllJob: 'GetAllJob',
+
+    UploadDistrictQuantity: 'UploadDistrictQuantity',
+
+    GetDistrictQuantityByYear: 'GetDistrictQuantityByYear',
+
+    GetCountOfDistrictQuantityByYear: 'GetCountOfDistrictQuantityByYear',
+
+    GetProvinceQuantityByYear: 'GetProvinceQuantityByYear',
+
+    GetCountOfProvinceQuantityByYear: 'GetCountOfProvinceQuantityByYear',
+
+    GetBranchQuantityByYear: 'GetBranchQuantityByYear',
+
+    GetCountOfBranchQuantityByYear: 'GetCountOfBranchQuantityByYear',
+
+    GetAreaQuantityByYear: 'GetAreaQuantityByYear',
+
+    GetCountOfAreaQuantityByYear: 'GetCountOfAreaQuantityByYear'
 
 }

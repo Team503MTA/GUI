@@ -1,6 +1,4 @@
-﻿using MongoDB.Bson;
-
-namespace DatabaseDAL.Keys
+﻿namespace DatabaseManager.Keys
 {
     public class ProvinceQuantityKeys
     {

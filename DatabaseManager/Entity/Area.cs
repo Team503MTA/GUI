@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace DatabaseManager.Entity
 {
-    public class Area : MongoRepository.Entity
+    public class Area : MongoRepository.Entity, ICloneable
     {
 
         [JsonProperty(Required = Required.Always)]
@@ -11,7 +12,12 @@ namespace DatabaseManager.Entity
 
         [JsonProperty(Required = Required.Always)]
         public string AreaName { get; set; }
-        
+
+
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
 
     }
 }

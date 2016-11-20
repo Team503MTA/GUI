@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using DatabaseDAL.Keys;
 using DatabaseManager.Entity;
-using DatabaseManager.Memory;
-using MongoDB.Bson;
+using DatabaseManager.Keys;
 using MongoRepository;
 
 namespace DatabaseManager
@@ -14,7 +14,35 @@ namespace DatabaseManager
         static void Main(string[] args)
         {
             //EntityDic.LoadAll();
+            TestThread();
+            Luong2();
+            Console.ReadLine();
+        }
 
+        public static void TestThread()
+        {
+            ThreadStart childref = Luong1;
+            Thread childThread = new Thread(childref);
+            childThread.Start();
+            return;
+        }
+
+        public static void Luong1()
+        {
+            for (int i = 0; i < 1000000; i++)
+            {
+                Console.WriteLine("dang trong luong");
+                Thread.Sleep(100);
+            }
+        }
+
+        public static void Luong2()
+        {
+            for (int i = 0; i < 1000000; i++)
+            {
+                Console.WriteLine("............");
+                Thread.Sleep(100);
+            }
         }
 
         public static void AddProvinceQuantity()
