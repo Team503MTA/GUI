@@ -73,6 +73,30 @@ namespace DatabaseManager.Memory
 
         #region GetCustom
 
+        public static Area GetAreaByName(string areaName)
+        {
+            return
+                EntityDic.AreaDic.Values.ToList().
+                    Where(p => p.AreaName.Equals(areaName)).
+                    Select(obj => obj.Clone() as Area).
+                    FirstOrDefault();
+        }
+        public static Branch GetBranchByName(string branchName)
+        {
+            return
+                EntityDic.BranchDic.Values.ToList().
+                    Where(p => p.BranchName.Equals(branchName)).
+                    Select(obj => obj.Clone() as Branch).
+                    FirstOrDefault();
+        }
+        public static Province GetProvinceByName(string provinceName)
+        {
+            return
+                EntityDic.ProvinceDic.Values.ToList().
+                    Where(p => p.ProvinceName.Equals(provinceName)).
+                    Select(obj => obj.Clone() as Province).
+                    FirstOrDefault();
+        }
         public static District GetDistrictByName(string districtName)
         {
             return
@@ -81,6 +105,8 @@ namespace DatabaseManager.Memory
                     Select(obj => obj.Clone() as District).
                     FirstOrDefault();
         }
+
+
 
         public static List<District> GetDistrictsInProvince(string provinceId)
         {
@@ -139,6 +165,53 @@ namespace DatabaseManager.Memory
                                 FirstOrDefault();
 
         }
+
+        public static List<DistrictQuantity> GetDistrictQuantityByYearAndDistrict(int year, string districtId)
+        {
+            if (!EntityDic.DistrictQuantityDic.ContainsKey(year)) return new List<DistrictQuantity>();
+            return
+                EntityDic.DistrictQuantityDic[year].Values.ToList().
+                                Where(p => p.DistrictId == districtId).
+                                Select(obj => obj.Clone() as DistrictQuantity).
+                                ToList();
+
+        }
+
+        public static List<ProvinceQuantity> GetProvinceQuantityByYearAndProvince(int year, string provinceId)
+        {
+            if (!EntityDic.ProvinceQuantityDic.ContainsKey(year)) return new List<ProvinceQuantity>();
+            return
+                EntityDic.ProvinceQuantityDic[year].Values.ToList().
+                                Where(p => p.ProvinceId == provinceId).
+                                Select(obj => obj.Clone() as ProvinceQuantity).
+                                ToList();
+
+        }
+
+        public static List<BranchQuantity> GetBranchQuantityByYearAndBranch(int year, string branchId)
+        {
+            if (!EntityDic.BranchQuantityDic.ContainsKey(year)) return new List<BranchQuantity>();
+            return
+                EntityDic.BranchQuantityDic[year].Values.ToList().
+                                Where(p => p.BranchId == branchId).
+                                Select(obj => obj.Clone() as BranchQuantity).
+                                ToList();
+
+        }
+
+        public static List<AreaQuantity> GetAreaQuantityByYearAndArea(int year, string areaId)
+        {
+            if (!EntityDic.AreaQuantityDic.ContainsKey(year)) return new List<AreaQuantity>();
+            return
+                EntityDic.AreaQuantityDic[year].Values.ToList().
+                                Where(p => p.AreaId == areaId).
+                                Select(obj => obj.Clone() as AreaQuantity).
+                                ToList();
+
+        }
+
+
+
 
         public static DistrictQuantity GetDistrictQuantityByDoubleKey(int year, DistrictQuantityKeys key)
         {

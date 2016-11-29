@@ -5,52 +5,36 @@
 }
 
 
-<input type="file" id="my_file_input" />
-<div id='my_file_output'></div>
+<div id="chartContainer" style="height: 400px; width: 75%; float: right;"></div>
+<div ng-controller="indexCtrl">
+    <select ng-model="MemberTypeSelected" ng-options="opt.Name for opt in ListMemberType"></select>
+    <select ng-model="YearSelected" ng-options="opt for opt in ListYear"></select>
 
+    <select ng-model="MemberSelected" ng-show="MemberTypeSelected.id === MemberTypeEnum.Area" ng-options="opt.AreaName for opt in ListArea"></select>
+    <select ng-model="MemberSelected" ng-show="MemberTypeSelected.id === MemberTypeEnum.Branch" ng-options="opt.BranchName for opt in ListBranch"></select>
+    <select ng-model="MemberSelected" ng-show="MemberTypeSelected.id === MemberTypeEnum.Province" ng-options="opt.ProvinceName for opt in ListProvince"></select>
+    <select ng-model="MemberSelected" ng-show="MemberTypeSelected.id === MemberTypeEnum.District" ng-options="opt.DistrictName for opt in ListDistrict"></select>
 
-<script type="text/javascript">
+    <br />
 
-    var oFileIn;
-    var dataUpload;
+    <label>
+        <input type="radio" ng-model="CatSelected" ng-value="Category.Sex" ng-checked="CatSelected">
+        Giới tính
+    </label>
 
-    oFileIn = document.getElementById('my_file_input');
-    if (oFileIn.addEventListener) {
-        oFileIn.addEventListener('change', filePicked, false);
-    }
+    <label>
+        <input type="radio" ng-model="CatSelected" ng-value="Category.Age" ng-checked="CatSelected">
+        Tuổi
+    </label>
 
-    function onResUploadDistrictQuantity(data) {
-        debugger;
-    }
+    <label>
+        <input type="radio" ng-model="CatSelected" ng-value="Category.Job" ng-checked="CatSelected">
+        Nghề nghiệp
+    </label>
 
-    function UpdateDistrict(data) {
-        debugger;
-        sendRequest($Controller.Upload, $Action.UploadDistrictQuantity, data, onResUploadDistrictQuantity);
-    }
+    <br />
 
-    function filePicked(oEvent) {
-        var oFile = oEvent.target.files[0];
-        // Create A File Reader HTML5
-        var reader = new FileReader();
+    <button ng-click="View()">Cập nhật biểu đồ</button>
 
-        // Ready The Event For When A File Gets Selected
-        reader.onload = function (e) {
-            var data = e.target.result;
-            var cfb = XLS.CFB.read(data, { type: 'binary' });
-            var wb = XLS.parse_xlscfb(cfb);
-            // Loop Over Each Sheet
-            wb.SheetNames.forEach(function (sheetName) {
-                // Obtain The Current Row As CSV
-                var sCsv = XLS.utils.make_csv(wb.Sheets[sheetName]);
-                var oJs = XLS.utils.sheet_to_row_object_array(wb.Sheets[sheetName]);
-
-                $("#my_file_output").html(sCsv);
-                UpdateDistrict(oJs);
-            });
-        };
-
-        // Tell JS To Start Reading The File.. You could delay this if desired
-        reader.readAsBinaryString(oFile);
-    }
-
-</script>
+</div>
+<script src="~/Javascript/main.js"></script>

@@ -1,0 +1,42 @@
+body{
+
+}
+#navTop {
+	background-color:aquamarine;
+}
+
+#myNavbar{
+background-color:#1abc9c;
+}
+
+#navTop a{
+	color: White;
+		
+
+}
+
+h1{
+	color: #c0392b;
+}
+.sectioncl{
+	border: 5px solid #e74c3c;
+}
+#Search{
+	float: right;
+}
+#NavRight{
+	background-color: blue;
+		border-radius: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	position: fixed;
+	left: -30px;
+}
+
+#NavRight li{
+	margin-top: 5px;
+	list-style: none;
+	color: brown;
+
+}

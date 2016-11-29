@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Specialized;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;

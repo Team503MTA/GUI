@@ -160,7 +160,41 @@ namespace Web.Controllers
 
         #endregion
 
+        public string GetDistrictQuantityCustom(int year, string districtName)
+        {
+            District district = MemoryOperator.GetDistrictByName(districtName);
+            if (district == null) return string.Empty;
+            List<DistrictQuantity> listDistrictQuantities = MemoryOperator.GetDistrictQuantityByYearAndDistrict(year,
+                district.Id);
+            return JsonConvert.SerializeObject(listDistrictQuantities);
+        }
 
+        public string GetProvinceQuantityCustom(int year, string provinceName)
+        {
+            Province province = MemoryOperator.GetProvinceByName(provinceName);
+            if (province == null) return string.Empty;
+            List<ProvinceQuantity> listProvinceQuantities = MemoryOperator.GetProvinceQuantityByYearAndProvince(year,
+                province.Id);
+            return JsonConvert.SerializeObject(listProvinceQuantities);
+        }
+
+        public string GetBranchQuantityCustom(int year, string branchName)
+        {
+            Branch branch = MemoryOperator.GetBranchByName(branchName);
+            if (branch == null) return string.Empty;
+            List<BranchQuantity> listBranchQuantities = MemoryOperator.GetBranchQuantityByYearAndBranch(year,
+                branch.Id);
+            return JsonConvert.SerializeObject(listBranchQuantities);
+        }
+
+        public string GetAreaQuantityCustom(int year, string areaName)
+        {
+            Area area = MemoryOperator.GetAreaByName(areaName);
+            if (area == null) return string.Empty;
+            List<AreaQuantity> listAreaQuantities = MemoryOperator.GetAreaQuantityByYearAndArea(year,
+                area.Id);
+            return JsonConvert.SerializeObject(listAreaQuantities);
+        }
 
     }
 }

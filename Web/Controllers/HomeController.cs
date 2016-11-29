@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using DatabaseManager.Entity;
+﻿using System.Web.Mvc;
 
 namespace Web.Controllers
 {

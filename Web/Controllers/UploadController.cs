@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using DatabaseManager.CustomObject;
 using DatabaseManager.Entity;
@@ -79,7 +77,11 @@ namespace Web.Controllers
 
             return "1";
         }
-        
+
+        public ActionResult Index()
+        {
+            return View();
+        }
 
     }
 }

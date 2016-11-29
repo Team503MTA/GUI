@@ -127,6 +127,8 @@
     </Content>
     <None Include="Javascript\vendor\jquery-1.10.2.intellisense.js" />
     <Content Include="Javascript\app.enum.js" />
+    <Content Include="Javascript\app.operator.js" />
+    <Content Include="Javascript\app.util.js" />
     <Content Include="Javascript\memory.js" />
     <Content Include="Javascript\vendor\jquery-1.10.2.js" />
     <Content Include="Javascript\vendor\jquery-1.10.2.min.js" />
@@ -143,6 +145,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Javascript\vendor\jquery-1.10.2.min.map" />
+    <Content Include="Views\Upload\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -193,7 +196,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\DataProvider\" />
-    <Folder Include="Views\Upload\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DatabaseManager\DatabaseManager.csproj">
